@@ -26,7 +26,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 	rm conda.sh
 
 
-FROM build as dev
+FROM build AS dev
 
 WORKDIR /mnt/gaussian-splatting
 RUN eval "$($conda_install_dir/bin/conda shell.bash hook)" && \
@@ -35,7 +35,7 @@ RUN eval "$($conda_install_dir/bin/conda shell.bash hook)" && \
 # docker build --target dev -t gaussian-splatting .
 # docker container run -it --name gaussian-splatting --gpus all --volume /mnt/i/FIT/MyStuff/Jason-1_LEO_VBAR_dx10.00_tumble5_ecl_brdf:/mnt/col gaussian-splatting --volume /mnt/i/projects/NETs/stamparkour/gaussian-splatting:/mnt/gaussian-splatting gaussian-splatting-dev
 
-FROM build as main
+FROM build AS main
 
 # install gaussian splatting
 WORKDIR /opt/gaussian-splatting
